@@ -199,10 +199,10 @@ export default {
           updatedate: new Date(item.updatedate).toJSON(),
         }));
     },
-    sortBases(e) {
+    sortBases: function (e) {
       let sortedPage = null
-        
-      switch(e.target.dataset.sort) {
+
+      switch (e.target.dataset.sort) {
         case 'updatedate':
           this.sortUpdateDate = !this.sortUpdateDate;
           this.sortRegion = false
@@ -220,10 +220,10 @@ export default {
           this.sortRegion = false
           this.sortUpdateDate = false
           if (this.sortUpdatedAt) {
-            sortedPage = this.sortedPages((a, b) => b.updated_at - a.updated_at)
+            sortedPage = this.sortedPages((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
             this.$set(this.pages, this.offset, sortedPage);
           } else {
-            sortedPage = this.sortedPages((a, b) => a.updated_at - b.updated_at)
+            sortedPage = this.sortedPages((a, b) => new Date(a.updated_at).getTime() - new Date(b.updated_at).getTime())
             this.$set(this.pages, this.offset, sortedPage);
           }
           break
@@ -240,8 +240,8 @@ export default {
           }
           break
       }
-      
-      
+
+
     },
     changeSelectCount(stateSelect) {
       this.$emit("select-count", stateSelect);

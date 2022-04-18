@@ -38,6 +38,21 @@ table td, td {
   background-color: #b3b7c2;
   border-radius: 4px;
 }
+.download_distribution {
+  text-align: center;
+  border: 1px solid gray;
+  padding: 8px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.distribution-text {
+  text-decoration: underline;
+}
+
+.distribution-size {
+  margin-left: 10px;
+}
 .tables-show {
   flex-direction: column;
   display: flex;

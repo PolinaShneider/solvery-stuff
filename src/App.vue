@@ -76,6 +76,7 @@
       @select-all="checkboxSelectAll"
       @select-count="changeSelectCount"
       @change-panel="changePanel"
+      @select-all-licenses="selectAllLicences"
       :archive="archive"
       :distributionId="distributionId"
       :errorTextLimit="errorTextLimit"
@@ -154,6 +155,9 @@ export default {
       //console.log(this.$refs.appTable)
       //this.$refs.appTable.clearPages()
       console.log("меняю таб")
+    },
+    selectAllLicences(checkboxes) {
+      this.checkboxIds = checkboxes;
     },
     changePanel(e, panels, licModIds) {
       this.panelId = +e.target.parentElement.dataset.id;

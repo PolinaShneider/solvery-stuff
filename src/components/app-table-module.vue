@@ -17,6 +17,12 @@
             </v-expansion-panel-header
           >
           <v-expansion-panel-content>
+            <distributions-content
+                @checkbox-all="selectLicences"
+                @change-distribution="changeDistributionSelect"
+                @create-license-archive="createLicenceArchieve"
+                :item="item"
+            />
             <selectDistribution
               @change-distribution="changeDistributionSelect"
               :item="item"
@@ -93,6 +99,7 @@ import tableLicenses from "@/components/table-licenses";
 import utils from "@/utils/utils";
 import selectCount from "@/components/select-count";
 import selectDistribution from "@/components/select-distribution";
+import distributionsContent from "@/components/distributions-content";
 
 export default {
   name: "app-table-module",
@@ -124,6 +131,7 @@ export default {
     selectDistribution,
     tableLicenses,
     selectCount,
+    distributionsContent,
   },
   props: {
     archive: {
@@ -243,6 +251,12 @@ export default {
       }
       this.$emit("select-all", e, checkboxes);
     },
+    selectLicences(checkboxes) {
+      this.$emit("select-all-licenses", checkboxes);
+    },
+    createLicenceArchieve() {
+      this.$emit("create-license-archive");
+    }
   },
   async mounted() {
     await this.fetchLicenses();
