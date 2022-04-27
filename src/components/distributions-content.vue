@@ -22,6 +22,7 @@ export default {
   methods: {
     download(distributionId) {
       this.$emit('change-distribution', distributionId);
+      this.$emit('checkbox-all', this.item.modules_licenses.map(el => el.id));
       this.$emit('create-license-archive');
     },
     downloadLicences() {
